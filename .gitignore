@@ -1,0 +1,30 @@
+
+# 忽略所有 .tif 文件
+*.tif
+
+# 忽略所有 .tfw 文件
+*.tfw
+
+# 忽略所有 .aux.xml 文件
+*.aux.xml
+
+# 忽略所有 .vat.cpg 文件
+*.vat.cpg
+*.tif.xml
+# 忽略所有 .vat.dbf 文件
+*.vat.dbf
+*.cpg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.sbx
+*.sbn
+*.cpg
+*.shp.xml
+
+*.exe
+/arcgis
+
+*.zip
+*.png
