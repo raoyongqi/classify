@@ -6,24 +6,21 @@ from arcpy import sa  # 导入空间分析模块
 arcpy.env.overwriteOutput = True
 
 # 输入栅格数据和掩膜文件
-input_raster_folder = r"C:\Users\r\Desktop\classify\gansu\gansu"  # 输入栅格数据路径
-mask_shapefile = r"C:\Users\r\Desktop\classify\province\gansu\gansu.shp"  # 掩膜矢量文件路径
+input_raster_folder = r"C:\Users\r\Desktop\classify\xizang\xizang"  # 输入栅格数据路径
+mask_shapefile = r"C:\Users\r\Desktop\classify\province\xizang\xizang.shp"  # 掩膜矢量文件路径
 
 # 输出文件夹路径
-output_raster_folder = r"C:\Users\r\Desktop\classify\gansu\extracted"  # 输出文件夹路径
+output_raster_folder = r"C:\Users\r\Desktop\classify\xizang\extracted"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(output_raster_folder):
     os.makedirs(output_raster_folder)
 # 输出文件夹路径
-wgs84_raster_folder = r"C:\Users\r\Desktop\classify\gansu\wsg84"  # 输出文件夹路径
+wgs84_raster_folder = r"C:\Users\r\Desktop\classify\xizang\wsg84"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(wgs84_raster_folder):
     os.makedirs(wgs84_raster_folder)
-
-# 重分类字典
-
 
 # WGS84坐标系
 wgs84 = arcpy.SpatialReference(4326)  # WGS84坐标系（EPSG:4326）
@@ -49,9 +46,9 @@ for filename in os.listdir(input_raster_folder):
             # 进行重分类操作
             reclass_raster = arcpy.sa.Reclassify(extracted_raster, "VALUE", arcpy.sa.RemapRange([
                 (-1, -1, 1),  # 水体冰川积雪
-                (0, 0.3, 2),  # 极低覆盖度
-                (0.3, 0.6, 3),  # 低覆盖度
-                (0.6, 0.8, 4),  # 中覆盖度
+                (0, 0.2, 2),  # 极低覆盖度
+                (0.2, 0.7, 3),  # 低覆盖度
+                (0.7, 0.8, 4),  # 中覆盖度
                 (0.8, 0.9, 5),  # 中高覆盖度
                 (0.9, 1, 6)  # 高覆盖度
             ]))

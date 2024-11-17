@@ -23,14 +23,6 @@ if not os.path.exists(wgs84_raster_folder):
     os.makedirs(wgs84_raster_folder)
 
 # 重分类字典
-reclass_dict = {
-    -1: 1,  # 水体冰川积雪
-    (0, 0.1): 2,  # 极低覆盖度
-    (0.1, 0.3): 3,  # 低覆盖度
-    (0.3, 0.5): 4,  # 中覆盖度
-    (0.5, 0.7): 5,  # 中高覆盖度
-    (0.7, 1): 6   # 高覆盖度
-}
 
 # WGS84坐标系
 wgs84 = arcpy.SpatialReference(4326)  # WGS84坐标系（EPSG:4326）

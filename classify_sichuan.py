@@ -6,31 +6,21 @@ from arcpy import sa  # 导入空间分析模块
 arcpy.env.overwriteOutput = True
 
 # 输入栅格数据和掩膜文件
-input_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\xinjiang"  # 输入栅格数据路径
-mask_shapefile = r"C:\Users\r\Desktop\classify\province\xinjiang\xinjiang.shp"  # 掩膜矢量文件路径
+input_raster_folder = r"C:\Users\r\Desktop\classify\sichuan\sichuan"  # 输入栅格数据路径
+mask_shapefile = r"C:\Users\r\Desktop\classify\province\sichuan\sichuan.shp"  # 掩膜矢量文件路径
 
 # 输出文件夹路径
-output_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\extracted"  # 输出文件夹路径
+output_raster_folder = r"C:\Users\r\Desktop\classify\sichuan\extracted"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(output_raster_folder):
     os.makedirs(output_raster_folder)
 # 输出文件夹路径
-wgs84_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\wsg84"  # 输出文件夹路径
+wgs84_raster_folder = r"C:\Users\r\Desktop\classify\sichuan\wsg84"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(wgs84_raster_folder):
     os.makedirs(wgs84_raster_folder)
-
-# 重分类字典
-reclass_dict = {
-    -1: 1,  # 水体冰川积雪
-    (0, 0.1): 2,  # 极低覆盖度
-    (0.1, 0.3): 3,  # 低覆盖度
-    (0.3, 0.5): 4,  # 中覆盖度
-    (0.5, 0.7): 5,  # 中高覆盖度
-    (0.7, 1): 6   # 高覆盖度
-}
 
 # WGS84坐标系
 wgs84 = arcpy.SpatialReference(4326)  # WGS84坐标系（EPSG:4326）
@@ -57,10 +47,10 @@ for filename in os.listdir(input_raster_folder):
             reclass_raster = arcpy.sa.Reclassify(extracted_raster, "VALUE", arcpy.sa.RemapRange([
                 (-1, -1, 1),  # 水体冰川积雪
                 (0, 0.2, 2),  # 极低覆盖度
-                (0.2, 0.5, 3),  # 低覆盖度
-                (0.5, 0.7, 4),  # 中覆盖度
-                (0.7, 0.8, 5),  # 中高覆盖度
-                (0.8, 1, 6)  # 高覆盖度
+                (0.2, 0.7, 3),  # 低覆盖度
+                (0.7, 0.8, 4),  # 中覆盖度
+                (0.8, 0.9, 5),  # 中高覆盖度
+                (0.9, 1, 6)  # 高覆盖度
             ]))
 
             # 保存重分类后的栅格
