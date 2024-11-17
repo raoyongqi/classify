@@ -57,10 +57,10 @@ for filename in os.listdir(input_raster_folder):
             reclass_raster = arcpy.sa.Reclassify(extracted_raster, "VALUE", arcpy.sa.RemapRange([
                 (-1, -1, 1),  # 水体冰川积雪
                 (0, 0.2, 2),  # 极低覆盖度
-                (0.2, 0.3, 3),  # 低覆盖度
-                (0.3, 0.5, 4),  # 中覆盖度
-                (0.5, 0.9, 5),  # 中高覆盖度
-                (0.9, 1, 6)  # 高覆盖度
+                (0.2, 0.5, 3),  # 低覆盖度
+                (0.5, 0.7, 4),  # 中覆盖度
+                (0.7, 0.8, 5),  # 中高覆盖度
+                (0.8, 1, 6)  # 高覆盖度
             ]))
 
             # 保存重分类后的栅格

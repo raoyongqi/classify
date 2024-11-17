@@ -6,17 +6,17 @@ from arcpy import sa  # 导入空间分析模块
 arcpy.env.overwriteOutput = True
 
 # 输入栅格数据和掩膜文件
-input_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\xinjiang"  # 输入栅格数据路径
-mask_shapefile = r"C:\Users\r\Desktop\classify\province\xinjiang\xinjiang.shp"  # 掩膜矢量文件路径
+input_raster_folder = r"C:\Users\r\Desktop\classify\gansu\gansu"  # 输入栅格数据路径
+mask_shapefile = r"C:\Users\r\Desktop\classify\province\gansu\gansu.shp"  # 掩膜矢量文件路径
 
 # 输出文件夹路径
-output_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\extracted"  # 输出文件夹路径
+output_raster_folder = r"C:\Users\r\Desktop\classify\gansu\extracted"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(output_raster_folder):
     os.makedirs(output_raster_folder)
 # 输出文件夹路径
-wgs84_raster_folder = r"C:\Users\r\Desktop\classify\xinjiang\wsg84"  # 输出文件夹路径
+wgs84_raster_folder = r"C:\Users\r\Desktop\classify\gansu\wsg84"  # 输出文件夹路径
 
 # 检查输出文件夹是否存在，不存在则创建
 if not os.path.exists(wgs84_raster_folder):
@@ -59,7 +59,7 @@ for filename in os.listdir(input_raster_folder):
                 (0, 0.2, 2),  # 极低覆盖度
                 (0.2, 0.3, 3),  # 低覆盖度
                 (0.3, 0.5, 4),  # 中覆盖度
-                (0.5, 0.9, 5),  # 中高覆盖度
+                (0.5, 0.8, 5),  # 中高覆盖度
                 (0.9, 1, 6)  # 高覆盖度
             ]))
 
